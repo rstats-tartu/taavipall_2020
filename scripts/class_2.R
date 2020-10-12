@@ -29,7 +29,7 @@ hip_fracture %>%
 
 hip_fracture_sel <- hip_fracture %>% 
   filter(county != "homeless") %>% 
-  select(year, sex, age_binned10, county, dementia, postacute_therapy, comorbidity, management_method)
+  select(year, sex, age_binned10, county, dementia, postacute_therapy, comorbidity, management_method, status_12m)
 
 hip_fracture_sel %>% 
   filter(postacute_therapy > 0) %>% 
@@ -85,5 +85,11 @@ hip_fracture_sel_sum %>%
   geom_smooth() +
   facet_wrap(~ county, scales = "free_y")
 
+#' 
+#'  
+hip_fracture_sel %>% 
+  filter(postacute_therapy > 0) %>% 
+  mutate(pt_log = log2(postacute_therapy)) %>% 
+  group_by()
   
 
